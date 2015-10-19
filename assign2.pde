@@ -6,8 +6,8 @@ final int GAME_OVER = 2;
 PImage bg1,bg2,hp,fighter,treasure,enemy;
 PImage start1,start2,end1,end2;
 
-int treasureX,treasureY,fighterX,fighterY,enemyX,enemyY,score;
-int m,q;
+int treasureX,treasureY,fighterX,fighterY,enemyX,enemyY;
+float m,q;
 int gameState;
 
 boolean upPressed = false;
@@ -37,7 +37,7 @@ void setup () {
   
   enemyY=floor(random(30,440)); //enemy  
   
-  m=195;
+  m=39;
   fighterX=550;
   fighterY=height/2;
 }
@@ -86,8 +86,10 @@ void draw() {
       if(treasureX>=fighterX-30 && treasureX<=fighterX+30 && treasureY>=fighterY-45 && treasureY<=fighterY+45 ){
         treasureX=floor(random(600)); 
         treasureY=floor(random(440));
-        score+=10;
-        println("score"+score);
+        m+=19.5;
+       if(m>=195){
+        m=195;
+       }
       }
       
       //enemy detection
@@ -138,8 +140,7 @@ void draw() {
         if (mousePressed){
           // click
           gameState = GAME_RUN;
-          m=195;
-          score=0;
+          m=39;
           enemyY=floor(random(30,440));
         }else{
           image(end1,0,0);          
@@ -188,3 +189,4 @@ void keyReleased(){
   }
 
 }
+
