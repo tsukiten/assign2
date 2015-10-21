@@ -106,10 +106,10 @@ void draw() {
       
       //enemy chasing
       if (enemyY>=fighterY+25.5){
-          enemyY-=2.5;
+          enemyY-=3;
         }
       if (enemyY<=fighterY-25.5){
-          enemyY+=2.5;
+          enemyY+=3;
         }
       
       //boundary detection
