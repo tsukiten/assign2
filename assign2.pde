@@ -7,7 +7,8 @@ PImage bg1,bg2,hp,fighter,treasure,enemy;
 PImage start1,start2,end1,end2;
 
 int treasureX,treasureY,fighterX,fighterY,enemyX,enemyY;
-float m,q;
+float m,q; //hp & background
+
 int gameState;
 
 boolean upPressed = false;
@@ -37,8 +38,9 @@ void setup () {
   
   enemyY=floor(random(30,440)); //enemy  
   
-  m=39;
-  fighterX=550;
+  m=39; //hp
+  
+  fighterX=550; //fighter
   fighterY=height/2;
 }
   
@@ -93,7 +95,7 @@ void draw() {
       }
       
       //enemy detection
-      if(enemyX>=fighterX-30 && enemyX<=fighterX+30 && enemyY>=fighterY-45 && enemyY<=fighterY+45 ){
+      if(enemyX>=fighterX-30 && enemyX<=fighterX+30 && enemyY>=fighterY-40 && enemyY<=fighterY+40 ){
         enemyX=0;
         enemyY=floor(random(30,440));
         m-=39;
@@ -101,6 +103,14 @@ void draw() {
         gameState=GAME_OVER;
         }
       }
+      
+      //enemy chasing
+      if (enemyY>=fighterY+25.5){
+          enemyY-=2.5;
+        }
+      if (enemyY<=fighterY-25.5){
+          enemyY+=2.5;
+        }
       
       //boundary detection
       if (fighterX>585){
